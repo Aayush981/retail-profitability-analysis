@@ -83,7 +83,8 @@ aren't telling you.
 
 | File | Description |
 |------|-------------|
-| `analysis_queries.sql` | All SQL queries used in the analysis |
-| `ecommerce_sales_dashboard.pbix` | Power BI dashboard file |
-| `Sample - Superstore.csv` | Dataset used |
-| `Images/` | Dashboard screenshots |
+| [analysis_queries.sql](SQL/analysis_queries.sql) | All SQL queries used in the analysis |
+| [database_setup.sql](SQL/database_setup.sql) | Database and table setup queries |
+| [ecommerce_sales_dashboard.pbix](Dashboard/ecommerce_sales_dashboard.pbix) | Power BI dashboard file |
+| [Sample - Superstore.csv](Data/Raw/Sample%20-%20Superstore.csv) | Raw dataset used |
+| [Images/](Images/) | Dashboard screenshots |
