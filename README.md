@@ -23,30 +23,68 @@ categories, regions, and customer segments.
 
 ---
 
+## How I Approached It
+- Aggregated profit margin by sub-category and region using GROUP BY
+- Used a CTE to bucket transactions into discount tiers (0%, 1–10%,
+  11–20%, 21–30%, 30%+), then compared average margin across tiers
+- Joined order-level data to product and region dimensions to isolate
+  where the losses concentrated
+
+---
 ## What I Found
 
 **1. High revenue was masking a profitability problem**
 $2.3M in revenue sounds strong. But after discounts and costs, only $286K 
 in profit remained — a 12.5% margin that signals something is structurally off.
 
-**2. Furniture looked strong on the surface — but wasn't**
-Furniture was generating solid sales volume. What it wasn't generating was profit. 
-High revenue with weak margins is one of the easiest things to miss if you're 
-only watching the top line.
+**2. Furniture sold like a major category and earned like a rounding error**
+Furniture brought in $742,000 — 32% of all revenue, nearly matching
+Technology's $836,000. But it returned just $18,451 in profit against
+Technology's $145,456. That's a 2.49% margin versus 17.40%, seven times
+worse, and it means a third of the revenue produced 6% of the profit.
 
-**3. Tables and Bookcases were quietly losing money**
-These two sub-categories were consistently generating negative profit across 
-multiple regions — not occasionally, consistently. The business was essentially 
-paying to sell these products.
 
-**4. Discounts above 20–30% were the main culprit**
-Once discounts crossed that threshold, margins collapsed. The business was 
-chasing sales volume at the direct expense of profitability — a classic 
-growth-vs-margin trap.
+**3. Tables and Bookcases lose money in three of four regions**
+Both sub-categories run negative almost everywhere. Tables lost $17,726
+overall, with the East region at -28.17% margin — the single worst
+result in the dataset. Bookcases lost $3,473, negative in Central, West
+and East. Each turns a profit in exactly one region (Bookcases in South
+at 12.29%, Tables in West at 1.75%), which makes this a product problem
+rather than a regional one. Together they destroyed $21,198 in profit.
 
-**5. Peak season sales didn't fix the problem**
-Revenue spiked toward year-end. Profit didn't follow proportionally. 
-More sales were just hiding the same underlying inefficiency.
+**4. Discounts above 20% destroy profitability — without exception**
+
+Margin falls at every tier as discounting increases:
+
+| Discount | Orders | Revenue | Profit | Margin |
+|----------|--------|---------|--------|--------|
+| 0%       | 4,798  | $1,087,908 | $320,988 | 29.51% |
+| 1–10%    | 94     | $54,369    | $9,029   | 16.61% |
+| 11–20%   | 3,709  | $792,153   | $91,757  | 11.58% |
+| 21–30%   | 227    | $103,227   | -$10,369 | -10.05% |
+| 30%+     | 1,166  | $259,544   | -$125,007 | -48.16% |
+
+20% is the breakeven line. Past it, every tier loses money.
+
+The 30%+ tier is the real damage: 1,166 orders — under 12% of all
+transactions — burned $125,007. Combined, discounts above 20%
+destroyed $135,376 of profit. Without them, total profit would have
+been $421,774 instead of $286,398. Roughly a third of this
+business's potential profit was given away at the till.
+
+**5. Peak season scales volume, not profitability**
+Q4 (Oct–Dec) generated $878,078 — 38% of four-year revenue — at a
+12.60% margin, statistically identical to the 12.47% annual average.
+November 2017 was the single largest revenue month in the dataset at
+$118,448, and returned an 8.18% margin, well below average. The
+business gets bigger in Q4 without getting better: the same structural
+margin problem simply operates at higher volume.
+
+**6. Monthly margin is wildly unstable**
+Margin swings from -18.05% (Jan 2015) to +27.21% (Oct 2016), with two
+months outright negative across the four years. Monthly profit is
+close to unpredictable even when revenue is steady — a sign that
+discounting decisions, not demand, are driving the bottom line.
 
 ---
 
