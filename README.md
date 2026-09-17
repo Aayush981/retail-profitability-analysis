@@ -18,7 +18,7 @@ Something was quietly eating into the numbers — and I wanted to find exactly w
 - **Power BI** — building an interactive dashboard with drill-through filters
 - **Excel** — initial data cleaning and validation
 
-Dataset: Sample Superstore Dataset (Kaggle) — 10,000+ retail transactions across 
+Dataset: Sample Superstore Dataset (Kaggle) — 9,994 retail transactions across 
 categories, regions, and customer segments.
 
 ---
