@@ -3,6 +3,15 @@
 
 ---
 
+## The Dashboard
+
+Built in Power BI with drill-through filters so you can move from 
+overall performance → category → sub-category → region in a few clicks.
+
+![Dashboard Overview](Images/dashboard_overview.png)
+
+---
+
 ## The Problem I Was Trying to Solve
 
 Most people look at $2.3M in revenue and think the business is doing well.
@@ -14,7 +23,7 @@ Something was quietly eating into the numbers — and I wanted to find exactly w
 
 ## What I Used
 
-- **MySQL** — querying 10,000+ transactions, calculating KPIs, analyzing discount tiers
+- **MySQL** — querying 9,994 transactions, calculating KPIs, analyzing discount tiers
 - **Power BI** — building an interactive dashboard with drill-through filters
 - **Excel** — initial data cleaning and validation
 
@@ -34,8 +43,7 @@ categories, regions, and customer segments.
 ## What I Found
 
 **1. High revenue was masking a profitability problem**
-$2.3M in revenue sounds strong. But after discounts and costs, only $286K 
-in profit remained — a 12.5% margin that signals something is structurally off.
+$2.3M in revenue sounds strong. Only $286K in profit remained — a 12.5% margin that signals something is structurally off.
 
 **2. Furniture sold like a major category and earned like a rounding error**
 Furniture brought in $742,000 — 32% of all revenue, nearly matching
@@ -94,15 +102,6 @@ discounting decisions, not demand, are driving the bottom line.
 - Stop promoting Tables and Bookcases until pricing or supplier costs are reviewed
 - Shift focus toward high-margin sub-categories: Copiers, Phones, Accessories
 - Track profit alongside revenue on every report — not as an afterthought
-
----
-
-## The Dashboard
-
-Built in Power BI with drill-through filters so you can move from 
-overall performance → category → sub-category → region in a few clicks.
-
-![Dashboard Overview](Images/dashboard_overview.png)
 
 ---
 
