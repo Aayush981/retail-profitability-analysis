@@ -33,11 +33,18 @@ categories, regions, and customer segments.
 ---
 
 ## How I Approached It
-- Aggregated profit margin by sub-category and region using GROUP BY
-- Used a CTE to bucket transactions into discount tiers (0%, 1–10%,
-  11–20%, 21–30%, 30%+), then compared average margin across tiers
-- Joined order-level data to product and region dimensions to isolate
-  where the losses concentrated
+
+- Loaded 9,994 transactions into MySQL and validated row counts and
+  totals against the source file
+- Calculated margin as profit ÷ revenue at every level rather than
+  reading profit alone
+- Used a CTE to bucket transactions into discount tiers, which is where
+  the threshold became visible — the raw discount column has too many
+  distinct values to read a pattern from
+- Used a subquery to isolate sub-categories performing below the
+  company-wide average margin
+- Segmented the loss-making sub-categories by region to test whether
+  losses were structural or local
 
 ---
 ## What I Found
@@ -98,11 +105,17 @@ discounting decisions, not demand, are driving the bottom line.
 
 ## What I Recommended
 
-- Set discount caps by sub-category — not a blanket discount policy
-- Stop promoting Tables and Bookcases until pricing or supplier costs are reviewed
-- Shift focus toward high-margin sub-categories: Copiers, Phones, Accessories
-- Track profit alongside revenue on every report — not as an afterthought
-
+1. **Cap discounts at 20%** — requiring approval above that line. This
+   alone protects $135,376, roughly a third of potential profit.
+2. **Audit the 30%+ discount orders** — 1,166 transactions losing
+   $125,007. Find out whether these are clearance, sales-rep
+   discretion, or standing policy, because the fix differs in each case.
+3. **Review Tables and Bookcases pricing or supplier costs** — a
+   combined $21,198 loss, negative in three of four regions. Product
+   economics, not regional execution.
+4. **Report margin alongside revenue on every dashboard.** Furniture at
+   32% of revenue and 6% of profit is invisible on a revenue-only report.
+   
 ---
 
 ## What This Project Taught Me
